@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vastu Grih Pravesh Invitation</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #f5f0e6, #e8e2dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .video-container {
+    position: relative;
+    height: 90vh; /* Fill most of the viewport height */
+    max-height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+  }
+
+  video {
+    height: 100%;       /* Fill container height */
+    width: auto;        /* Maintain portrait aspect ratio */
+    object-fit: contain; 
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  /* Google Maps icon without background */
+  .map-button {
+    position: absolute;
+    bottom: 26%; /* Move a little above the bottom */
+    left: 64%;
+    transform: translateX(-50%);
+    background: none; /* Remove background */
+    padding: 0;
+    font-size: 0; /* Hide any text spacing */
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .map-button img {
+    width: 26px; /* Adjust size of icon */
+    height: 30px;
+  }
+
+  .overlay {
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    z-index: 3;
+    padding: 20px;
+    border-radius: 20px;
+    transition: opacity 0.5s;
+  }
+
+  @media (max-width: 600px) {
+    .overlay { font-size: 20px; }
+    .map-button img { width: 32px; height: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="video-container">
+  <video id="invitationVideo" playsinline>
+    <source src="InvitationCard_2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Inside <div class="video-container"> -->
+	<a class="map-button" href="https://share.google/UPs20TKp3Kb22koLa" target="_blank" id="mapButton" style="display:none;">
+	  <img src="googlemap.jpg" alt="Google Maps Icon">
+	</a>
+
+  <div class="overlay" id="playOverlay">
+    Click to Play Invitation 🎵
+  </div>
+</div>
+
+<script>
+const video = document.getElementById('invitationVideo');
+const overlay = document.getElementById('playOverlay');
+const mapButton = document.getElementById('mapButton');
+
+// Play video on overlay click
+overlay.addEventListener('click', () => {
+  video.play();
+  video.style.opacity = 1; 
+  overlay.style.opacity = 0;
+  setTimeout(() => overlay.style.display = 'none', 500);
+});
+
+// Show Google Maps button 6 seconds after page load
+setTimeout(() => {
+  mapButton.style.display = 'block';
+}, 6000);
+</script>
+
+</body>
+</html>
