@@ -107,18 +107,17 @@ const video = document.getElementById('invitationVideo');
 const overlay = document.getElementById('playOverlay');
 const mapButton = document.getElementById('mapButton');
 
-// Play video on overlay click
 overlay.addEventListener('click', () => {
   video.play();
   video.style.opacity = 1; 
   overlay.style.opacity = 0;
   setTimeout(() => overlay.style.display = 'none', 500);
-});
 
-// Show Google Maps button 6 seconds after page load
-setTimeout(() => {
-  mapButton.style.display = 'block';
-}, 6000);
+  // Show Google Maps button 6 seconds after overlay click
+  setTimeout(() => {
+    mapButton.style.display = 'block';
+  }, 6000); // 6000 milliseconds = 6 seconds
+});
 </script>
 
 </body>
